@@ -14,5 +14,21 @@ public record DadosAtualizarAtendente(
         Loja loja,
         @DecimalMin(value = "0.00")
         @Digits(integer = 6, fraction = 2)
-        BigDecimal salario) {
+        BigDecimal salario,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasPrimeiraSemana,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasSegundaSemana,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasTerceiraSemana,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasQuartaSemana,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasQuintaSemana
+        ) {
 }

@@ -57,6 +57,21 @@ public class Atendente extends Funcionario {
         if (dados.salario() != null) {
             super.setSalario(new BigDecimal(String.valueOf(dados.salario())));
         }
+        if (dados.vendasPrimeiraSemana() != null) {
+            this.setVendaPrimeiraSemana(new BigDecimal(String.valueOf(dados.vendasPrimeiraSemana())));
+        }
+        if (dados.vendasSegundaSemana() != null) {
+            this.setVendaSegundaSemana(new BigDecimal(String.valueOf(dados.vendasSegundaSemana())));
+        }
+        if (dados.vendasTerceiraSemana() != null) {
+            this.setVendaTerceiraSemana(new BigDecimal(String.valueOf(dados.vendasTerceiraSemana())));
+        }
+        if (dados.vendasQuartaSemana() != null) {
+            this.setVendaQuartaSemana(new BigDecimal(String.valueOf(dados.vendasQuartaSemana())));
+        }
+        if (dados.vendasQuintaSemana() != null) {
+            this.setVendaQuintaSemana(new BigDecimal(String.valueOf(dados.vendasQuintaSemana())));
+        }
     }
 
     public void atualizarInformacao(List<Atendente> lista) {

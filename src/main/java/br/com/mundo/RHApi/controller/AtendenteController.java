@@ -15,14 +15,11 @@ import java.util.List;
 @RequestMapping("atendentes")
 public class AtendenteController {
 
-    private final AtendenteRepository repository;
-    private final ListasDeFuncionarios listasDeFuncionarios;
+    @Autowired
+    private AtendenteRepository repository;
 
     @Autowired
-    public AtendenteController(AtendenteRepository repository, ListasDeFuncionarios listasDeFuncionarios) {
-        this.repository = repository;
-        this.listasDeFuncionarios = listasDeFuncionarios;
-    }
+    private ListasDeFuncionarios lista;
 
     @PostMapping
     @Transactional
@@ -40,8 +37,11 @@ public class AtendenteController {
     @PutMapping("/atualizarGratificacao")
     @Transactional
     public void atualizarGratificacao() {
-        listasDeFuncionarios.adicionar(repository.findAllByAtivoTrue());
-        new Atendente().atualizarInformacao(listasDeFuncionarios.calcularGratificacoes());
+        var todosAtendentes = repository.findAllByAtivoTrue();
+        lista.adicionar(todosAtendentes);
+        todosAtendentes = lista.calcularGratificacoes();
+
+        repository.saveAll(todosAtendentes);
     }
 
     @DeleteMapping("/{id}")

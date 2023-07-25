@@ -3,12 +3,13 @@ package br.com.mundo.RHApi.modelos.calculadora;
 import br.com.mundo.RHApi.modelos.atendente.Atendente;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Component
+@Service
 public class ListasDeFuncionarios {
 
     private static List<Atendente> listaMundo = new ArrayList<>();

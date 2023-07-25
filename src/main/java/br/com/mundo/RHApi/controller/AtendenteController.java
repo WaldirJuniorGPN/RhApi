@@ -21,7 +21,7 @@ public class AtendenteController {
     @Autowired
     private ListasDeFuncionarios lista;
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroAtendente dados) {
         repository.save(new Atendente(dados));

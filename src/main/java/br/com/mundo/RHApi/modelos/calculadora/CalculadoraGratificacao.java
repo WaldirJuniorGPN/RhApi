@@ -10,8 +10,6 @@ import java.util.List;
 
 public class CalculadoraGratificacao {
 
-    private List<Atendente> listaAtendenteCalculadora = new ArrayList<>();
-
     public CalculadoraGratificacao(){}
 
     protected void calcularGratificacao(List<Atendente> lista, BigDecimal percentual1, BigDecimal percentual2, BigDecimal percentual3, BigDecimal percentual4) {

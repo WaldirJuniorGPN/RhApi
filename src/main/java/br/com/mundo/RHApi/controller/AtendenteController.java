@@ -21,10 +21,17 @@ public class AtendenteController {
     @Autowired
     private ListasDeFuncionarios lista;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrar/funcionario")
     @Transactional
     public void cadastrar(@RequestBody @Valid DadosCadastroAtendente dados) {
         repository.save(new Atendente(dados));
+    }
+
+    @PutMapping("/cadastrar/vendas")
+    @Transactional
+    public void cadastrarVendas(@RequestBody @Valid DadosAtualizarVendasAtendente dados) {
+        var atendente = repository.getReferenceById(dados.id());
+        atendente.atualizarInformacao(dados);
     }
 
     @PutMapping
@@ -34,12 +41,12 @@ public class AtendenteController {
         atendente.atualizarInformacao(dados);
     }
 
-    @PutMapping("/atualizarGratificacao")
+    @PutMapping("/cadastrar/gratificacao")
     @Transactional
     public void atualizarGratificacao() {
         var todosAtendentes = repository.findAllByAtivoTrue();
         lista.adicionar(todosAtendentes);
-        todosAtendentes = lista.calcularGratificacoes();
+        lista.calcularGratificacoes();
 
         repository.saveAll(todosAtendentes);
     }

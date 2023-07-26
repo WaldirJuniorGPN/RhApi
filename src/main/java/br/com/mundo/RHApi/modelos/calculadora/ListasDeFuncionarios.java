@@ -44,15 +44,25 @@ public class ListasDeFuncionarios {
         });
     }
 
-    public void adicionar(List<Atendente> listaTodos){
+    public void adicionar(List<Atendente> listaTodos) {
         new ListasDeFuncionarios(listaTodos);
     }
 
     public List<Atendente> calcularGratificacoes() {
-        ListasDeFuncionarios.listaMundo = new MundoPercentuaisDaCalculadoraGratificacao().calcular(listaMundo);
-        ListasDeFuncionarios.listaSonho = new SonhoPercentuaisDaCalculadoraGratificacao().calcular(listaSonho);
-        ListasDeFuncionarios.listaVovo = new VovoPercentuaisDaCalculadoraGratificacao().calcular(listaVovo);
-        ListasDeFuncionarios.listaLapis = new LapisPercentuaisDaCalculadoraGratificacao().calcular(listaLapis);
+
+        if (!listaMundo.isEmpty()) {
+            new MundoPercentuaisDaCalculadoraGratificacao().calcular(listaMundo);
+        }
+        if (!listaLapis.isEmpty()) {
+            new LapisPercentuaisDaCalculadoraGratificacao().calcular(listaLapis);
+        }
+        if (!listaSonho.isEmpty()) {
+            new SonhoPercentuaisDaCalculadoraGratificacao().calcular(listaSonho);
+        }
+        if (!listaVovo.isEmpty()) {
+            new VovoPercentuaisDaCalculadoraGratificacao().calcular(listaVovo);
+        }
+
 
         ListasDeFuncionarios.listaTodosOsFuncionarios.addAll(ListasDeFuncionarios.listaMundo);
         ListasDeFuncionarios.listaTodosOsFuncionarios.addAll(ListasDeFuncionarios.listaSonho);

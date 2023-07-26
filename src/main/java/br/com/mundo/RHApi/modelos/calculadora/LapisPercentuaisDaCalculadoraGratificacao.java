@@ -13,8 +13,8 @@ public class LapisPercentuaisDaCalculadoraGratificacao extends CalculadoraGratif
     private static final Double DEMAIS_COLOCADOS = 0.002;
 
 
-    public List<Atendente> calcular(List<Atendente> lista) {
-        return super.calcularGratificacao(lista, BigDecimal.valueOf(PRIMEIRO_COLOCADO), BigDecimal.valueOf(SEGUNDO_COLOCADO), BigDecimal.valueOf(TERCEIRO_COLOCADO), BigDecimal.valueOf(DEMAIS_COLOCADOS));
+    public void calcular(List<Atendente> lista) {
+        super.calcularGratificacao(lista, BigDecimal.valueOf(PRIMEIRO_COLOCADO), BigDecimal.valueOf(SEGUNDO_COLOCADO), BigDecimal.valueOf(TERCEIRO_COLOCADO), BigDecimal.valueOf(DEMAIS_COLOCADOS));
     }
 
 }

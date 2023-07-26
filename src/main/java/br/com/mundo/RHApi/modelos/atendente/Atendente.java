@@ -93,23 +93,20 @@ public class Atendente extends Funcionario {
         if (dados.vendasQuintaSemana() != null) {
             this.setVendaQuintaSemana(new BigDecimal(String.valueOf(dados.vendasQuintaSemana())));
         }
+        calcularVendaTotal();
     }
 
-    public void atualizarInformacao(List<Atendente> lista) {
-        lista.forEach(atendente -> {
-            this.setGratificacaoPrimeiraSemana(atendente.getGratificacaoPrimeiraSemana());
-            this.setGratificacaoSegundaSemana(atendente.getGratificacaoSegundaSemana());
-            this.setGratificacaoTerceiraSemana(atendente.getGratificacaoTerceiraSemana());
-            this.setGratificacaoQuartaSemana(atendente.getGratificacaoQuartaSemana());
-            this.setGratificacaoQuintaSemana(atendente.getGratificacaoQuintaSemana());
+    private void calcularVendaTotal() {
+        BigDecimal vendaTotal = BigDecimal.ZERO;
+        vendaTotal = vendaTotal.add(getVendaPrimeiraSemana())
+                .add(getVendaSegundaSemana())
+                .add(getVendaTerceiraSemana())
+                .add(getVendaQuartaSemana())
+                .add(getVendaQuintaSemana());
 
-            this.setGratificacaoTotal(getGratificacaoPrimeiraSemana()
-                    .add(getVendaSegundaSemana()
-                    .add(getVendaTerceiraSemana()
-                    .add(getVendaQuartaSemana()
-                    .add(getVendaQuintaSemana())))));
-        });
+        this.setVendaTotal(vendaTotal);
     }
+
 
     @Override
     public void desativar() {

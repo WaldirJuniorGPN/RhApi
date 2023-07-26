@@ -1,15 +1,18 @@
 package br.com.mundo.RHApi.controller;
 
+import br.com.mundo.RHApi.modelos.dto.DadosAtualizarAtendente;
+import br.com.mundo.RHApi.modelos.dto.DadosAtualizarVendasAtendente;
+import br.com.mundo.RHApi.modelos.dto.DadosCadastroAtendente;
+import br.com.mundo.RHApi.modelos.dto.DadosListagemAtendente;
 import br.com.mundo.RHApi.modelos.atendente.*;
 import br.com.mundo.RHApi.modelos.calculadora.ListasDeFuncionarios;
+import br.com.mundo.RHApi.modelos.repository.AtendenteRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("atendentes")

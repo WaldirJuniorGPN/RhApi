@@ -1,5 +1,6 @@
-package br.com.mundo.RHApi.modelos.atendente;
+package br.com.mundo.RHApi.modelos.repository;
 
+import br.com.mundo.RHApi.modelos.atendente.Atendente;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

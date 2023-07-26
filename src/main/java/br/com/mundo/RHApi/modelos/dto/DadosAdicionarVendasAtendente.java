@@ -1,4 +1,4 @@
-package br.com.mundo.RHApi.modelos.atendente;
+package br.com.mundo.RHApi.modelos.dto;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.Digits;

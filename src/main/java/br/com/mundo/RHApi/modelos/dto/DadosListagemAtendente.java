@@ -1,6 +1,7 @@
-package br.com.mundo.RHApi.modelos.atendente;
+package br.com.mundo.RHApi.modelos.dto;
 
 import br.com.mundo.RHApi.modelos.Loja;
+import br.com.mundo.RHApi.modelos.atendente.Atendente;
 
 import java.math.BigDecimal;
 

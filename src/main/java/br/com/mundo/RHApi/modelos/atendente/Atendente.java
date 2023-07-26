@@ -1,5 +1,8 @@
 package br.com.mundo.RHApi.modelos.atendente;
 
+import br.com.mundo.RHApi.modelos.dto.DadosAtualizarAtendente;
+import br.com.mundo.RHApi.modelos.dto.DadosAtualizarVendasAtendente;
+import br.com.mundo.RHApi.modelos.dto.DadosCadastroAtendente;
 import br.com.mundo.RHApi.modelos.Funcionario;
 import br.com.mundo.RHApi.modelos.calculadora.ListasDeFuncionarios;
 import jakarta.persistence.DiscriminatorValue;

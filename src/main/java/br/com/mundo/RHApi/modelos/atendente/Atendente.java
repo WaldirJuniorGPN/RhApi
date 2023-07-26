@@ -114,8 +114,9 @@ public class Atendente extends Funcionario {
     }
 
 
-    public void setGratificacaoTotal(BigDecimal gratificacaoTotal) {
-        this.gratificacaoTotal.add(gratificacaoTotal);
+    public void setGratificacaoTotal(BigDecimal gratificacao) {
+
+        this.gratificacaoTotal = gratificacao;
     }
 
 }

@@ -61,7 +61,7 @@ public class AtendenteController {
         atendente.desativar();
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public Page<DadosListagemAtendente> listar(Pageable paginacao) {
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemAtendente::new);
     }

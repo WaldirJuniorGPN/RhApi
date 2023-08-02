@@ -58,12 +58,23 @@ public class CalculadoraGratificacao {
 
         //quinta Semana acima.
 
+        lista.sort(Comparator.comparing(Atendente::getVendaSextaSemana).reversed());
+        lista.get(0).setGratificacaoSextaSemana(lista.get(0).getVendaSextaSemana().multiply(percentual1).setScale(2, RoundingMode.UP));
+        lista.get(1).setGratificacaoSextaSemana(lista.get(1).getVendaSextaSemana().multiply(percentual2).setScale(2, RoundingMode.UP));
+        lista.get(2).setGratificacaoSextaSemana(lista.get(2).getVendaSextaSemana().multiply(percentual2).setScale(2, RoundingMode.UP));
+
+        lista.subList(3, lista.size()).forEach(atendente -> atendente.setGratificacaoSextaSemana(atendente.getVendaSextaSemana().multiply(percentual4).setScale(2, RoundingMode.UP)));
+
+        //sexta Semana acima.
+
         lista.forEach(atendente -> {
             atendente.setGratificacaoTotal(atendente.getGratificacaoPrimeiraSemana()
                     .add(atendente.getGratificacaoSegundaSemana()
                             .add(atendente.getGratificacaoTerceiraSemana()
                                     .add(atendente.getGratificacaoQuartaSemana()
-                                            .add(atendente.getGratificacaoQuintaSemana())))));
+                                            .add(atendente.getGratificacaoQuintaSemana()
+                                                    .add(atendente.getGratificacaoSextaSemana()))))));
+
         });
 
     }

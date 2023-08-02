@@ -26,6 +26,7 @@ public class Atendente extends Funcionario {
     private BigDecimal vendaTerceiraSemana = BigDecimal.ZERO;
     private BigDecimal vendaQuartaSemana = BigDecimal.ZERO;
     private BigDecimal vendaQuintaSemana = BigDecimal.ZERO;
+    private BigDecimal vendaSextaSemana = BigDecimal.ZERO;
     private BigDecimal vendaTotal = BigDecimal.ZERO;
 
     private BigDecimal gratificacaoPrimeiraSemana = BigDecimal.ZERO;
@@ -33,6 +34,7 @@ public class Atendente extends Funcionario {
     private BigDecimal gratificacaoTerceiraSemana = BigDecimal.ZERO;
     private BigDecimal gratificacaoQuartaSemana = BigDecimal.ZERO;
     private BigDecimal gratificacaoQuintaSemana = BigDecimal.ZERO;
+    private BigDecimal gratificacaoSextaSemana = BigDecimal.ZERO;
     private BigDecimal gratificacaoTotal = BigDecimal.ZERO;
 
     @Setter(AccessLevel.NONE)
@@ -75,6 +77,9 @@ public class Atendente extends Funcionario {
         if (dados.vendasQuintaSemana() != null) {
             this.setVendaQuintaSemana(new BigDecimal(String.valueOf(dados.vendasQuintaSemana())));
         }
+        if (dados.vendasSextaSemana() != null) {
+            this.setVendaSextaSemana(new BigDecimal(String.valueOf(dados.vendasSextaSemana())));
+        }
     }
 
     public void atualizarInformacao(DadosAtualizarVendasAtendente dados) {
@@ -93,6 +98,9 @@ public class Atendente extends Funcionario {
         if (dados.vendasQuintaSemana() != null) {
             this.setVendaQuintaSemana(new BigDecimal(String.valueOf(dados.vendasQuintaSemana())));
         }
+        if (dados.vendasSextaSemana() != null) {
+            this.setVendaSextaSemana(new BigDecimal(String.valueOf(dados.vendasSextaSemana())));
+        }
         calcularVendaTotal();
     }
 
@@ -102,7 +110,8 @@ public class Atendente extends Funcionario {
                 .add(getVendaSegundaSemana())
                 .add(getVendaTerceiraSemana())
                 .add(getVendaQuartaSemana())
-                .add(getVendaQuintaSemana());
+                .add(getVendaQuintaSemana())
+                .add(getVendaSextaSemana());
 
         this.setVendaTotal(vendaTotal);
     }

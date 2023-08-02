@@ -29,6 +29,9 @@ public record DadosAtualizarAtendente(
         BigDecimal vendasQuartaSemana,
         @DecimalMin(value = "0.00")
         @Digits(integer = 6, fraction = 2)
-        BigDecimal vendasQuintaSemana
+        BigDecimal vendasQuintaSemana,
+        @DecimalMin(value = "0.00")
+        @Digits(integer = 6, fraction = 2)
+        BigDecimal vendasSextaSemana
         ) {
 }

@@ -6,21 +6,22 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-@Entity(name = "Funcionario")
-@Table(name = "funcionarios")
-@AllArgsConstructor
+@Entity(name = "Loja")
+@Table(name = "lojas")
 @NoArgsConstructor
-@DiscriminatorColumn(name = "tipo-funcionario")
+@AllArgsConstructor
 @Getter
 @EqualsAndHashCode(of = "id")
-public abstract class Funcionario {
+public class Loja {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private BigDecimal salario;
 
+    @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
+    private List<Atendente> atendentes = new ArrayList<>();
 }

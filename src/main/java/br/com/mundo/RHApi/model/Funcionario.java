@@ -1,22 +1,20 @@
-package br.com.mundo.RHApi.modelos;
+package br.com.mundo.RHApi.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Entity
+@Entity(name = "Funcionario")
 @Table(name = "funcionarios")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "tipo_funcionario")
-@Getter
-@Setter
+@AllArgsConstructor
 @NoArgsConstructor
+@Getter
 @EqualsAndHashCode(of = "id")
-public abstract class Funcionario {
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,8 +22,4 @@ public abstract class Funcionario {
     private String nome;
     private BigDecimal salario;
 
-    @Enumerated(EnumType.STRING)
-    private Loja loja;
-
-    public abstract void desativar();
 }

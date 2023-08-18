@@ -1,6 +1,7 @@
 package br.com.mundo.RHApi.model;
 
 
+import br.com.mundo.RHApi.dto.request.DadosCadastroAtedente;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -22,4 +23,10 @@ public class Atendente extends Funcionario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Loja loja;
+
+    public Atendente(DadosCadastroAtedente dados) {
+        super.setNome(dados.nome());
+        super.setSalario(dados.salario());
+        this.loja = dados.loja();
+    }
 }

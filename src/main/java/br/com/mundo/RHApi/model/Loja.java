@@ -1,5 +1,6 @@
 package br.com.mundo.RHApi.model;
 
+import br.com.mundo.RHApi.dto.request.DadosCadastroLoja;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -24,4 +25,8 @@ public class Loja {
 
     @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
     private List<Atendente> atendentes = new ArrayList<>();
+
+    public Loja(DadosCadastroLoja dados) {
+        this.nome = dados.nome();
+    }
 }

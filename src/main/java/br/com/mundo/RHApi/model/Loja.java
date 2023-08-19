@@ -1,5 +1,6 @@
 package br.com.mundo.RHApi.model;
 
+import br.com.mundo.RHApi.dto.request.DadosAtualizacaoLoja;
 import br.com.mundo.RHApi.dto.request.DadosCadastroLoja;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,10 @@ public class Loja {
     private List<Atendente> atendentes = new ArrayList<>();
 
     public Loja(DadosCadastroLoja dados) {
+        this.nome = dados.nome();
+    }
+
+    public void atualizarDados(DadosAtualizacaoLoja dados) {
         this.nome = dados.nome();
     }
 }

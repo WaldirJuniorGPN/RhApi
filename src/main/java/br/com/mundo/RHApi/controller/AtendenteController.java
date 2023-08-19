@@ -49,7 +49,7 @@ public class AtendenteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity excluir(@PathVariable Long id){
+    public ResponseEntity excluir(@PathVariable Long id) {
         atendenteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

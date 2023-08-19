@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Entity(name = "Funcionario")
 @Table(name = "funcionarios")
 @NoArgsConstructor
-@DiscriminatorColumn(name = "tipo-funcionario")
+@DiscriminatorColumn(name = "tipo_funcionario")
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")

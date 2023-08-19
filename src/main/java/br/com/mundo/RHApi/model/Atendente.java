@@ -1,6 +1,7 @@
 package br.com.mundo.RHApi.model;
 
 
+import br.com.mundo.RHApi.dto.request.DadosAtualizacaoAtendente;
 import br.com.mundo.RHApi.dto.request.DadosCadastroAtedente;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -28,5 +29,17 @@ public class Atendente extends Funcionario {
         super.setNome(dados.nome());
         super.setSalario(dados.salario());
         this.loja = dados.loja();
+    }
+
+    public void atualizarAtendente(DadosAtualizacaoAtendente dados) {
+        if (dados.nome() != null) {
+            super.setNome(dados.nome());
+        }
+        if (dados.salario() != null) {
+            super.setSalario(dados.salario());
+        }
+        if (dados.loja() != null) {
+            this.loja = dados.loja();
+        }
     }
 }

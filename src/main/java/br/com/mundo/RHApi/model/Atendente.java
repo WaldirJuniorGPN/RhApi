@@ -3,10 +3,7 @@ package br.com.mundo.RHApi.model;
 
 import br.com.mundo.RHApi.dto.request.DadosAtualizacaoAtendente;
 import br.com.mundo.RHApi.dto.request.DadosCadastroAtedente;
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +21,9 @@ public class Atendente extends Funcionario {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Loja loja;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private VendasSemanais vendasSemanais;
 
     public Atendente(DadosCadastroAtedente dados) {
         super.setNome(dados.nome());

@@ -5,7 +5,7 @@ import br.com.mundo.RHApi.model.Loja;
 
 public record DadosDetalhamentoAtendente(Long id, String nome, Long idLoja) {
 
-    public DadosDetalhamentoAtendente(Atendente atendente){
+    public DadosDetalhamentoAtendente(Atendente atendente) {
         this(atendente.getId(), atendente.getNome(), atendente.getLoja().getId());
     }
 }

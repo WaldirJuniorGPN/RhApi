@@ -1,5 +1,6 @@
 package br.com.mundo.RHApi.model;
 
+import br.com.mundo.RHApi.dto.request.DadosAtualizacaoVendasSemanais;
 import br.com.mundo.RHApi.dto.request.DadosCadastroVendasSemanais;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,27 @@ public class VendasSemanais {
         this.vendasQuartaSemana = dados.vendasQuartaSemana();
         this.vendasQuintaSemana = dados.vendasQuintaSemana();
         this.vendasSextaSemana = dados.vendasSextaSemana();
+    }
+
+    public void atualizacaoVendas(DadosAtualizacaoVendasSemanais dados) {
+        if (dados.vendasPrimeiraSemana() != null) {
+            this.vendasPrimeiraSemana = dados.vendasPrimeiraSemana();
+        }
+        if (dados.vendasSegundaSemana() != null) {
+            this.vendasSegundaSemana = dados.vendasSegundaSemana();
+        }
+        if (dados.vendasTerceiraSemana() != null) {
+            this.vendasTerceiraSemana = dados.vendasTerceiraSemana();
+        }
+        if (dados.vendasQuartaSemana() != null) {
+            this.vendasQuartaSemana = dados.vendasQuartaSemana();
+        }
+        if (dados.vendasQuintaSemana() != null) {
+            this.vendasQuintaSemana = dados.vendasQuintaSemana();
+        }
+        if (dados.vendasSextaSemana() != null) {
+            this.vendasSextaSemana = dados.vendasSextaSemana();
+        }
     }
 
 }

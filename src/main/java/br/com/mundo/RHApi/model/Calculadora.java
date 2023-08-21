@@ -1,5 +1,6 @@
 package br.com.mundo.RHApi.model;
 
+import br.com.mundo.RHApi.dto.request.DadosAtualizacaoCalculadora;
 import br.com.mundo.RHApi.dto.request.DadosCadastroCalculadora;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -28,5 +29,20 @@ public class Calculadora {
         this.percentualSegundoColocado = dados.percentualSegundoColocado();
         this.percentualTerceiroColocado = dados.percentualTerceiroColocado();
         this.percentualDemaisColocados = dados.percentualDemaisColocados();
+    }
+
+    public void atualizarPercentual(DadosAtualizacaoCalculadora dados) {
+        if (dados.percentualPrimeiroColocado() != null) {
+            this.percentualPrimeiroColocado = dados.percentualPrimeiroColocado();
+        }
+        if (dados.percentualSegundoColocado() != null) {
+            this.percentualSegundoColocado = dados.percentualSegundoColocado();
+        }
+        if (dados.percentualTerceiroColocado() != null) {
+            this.percentualTerceiroColocado = dados.percentualTerceiroColocado();
+        }
+        if (dados.percentualDemaisColocados() != null) {
+            this.percentualDemaisColocados = dados.percentualDemaisColocados();
+        }
     }
 }

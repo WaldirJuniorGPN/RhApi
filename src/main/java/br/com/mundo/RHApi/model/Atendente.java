@@ -42,4 +42,8 @@ public class Atendente extends Funcionario {
             this.loja = dados.loja();
         }
     }
+
+    public void setGratificacao(BigDecimal gratificacao) {
+        this.gratificacao = gratificacao;
+    }
 }

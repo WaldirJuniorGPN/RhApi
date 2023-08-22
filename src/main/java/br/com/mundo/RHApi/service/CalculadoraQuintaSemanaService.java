@@ -2,11 +2,13 @@ package br.com.mundo.RHApi.service;
 
 import br.com.mundo.RHApi.repository.AtendenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Comparator;
 
+@Component
 public class CalculadoraQuintaSemanaService implements CalculadoraDeGratificacao {
 
     @Autowired

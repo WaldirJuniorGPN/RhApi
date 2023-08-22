@@ -11,4 +11,8 @@ public class CalculadoraService {
     @Autowired
     private List<CalculadoraDeGratificacao> calculadora;
 
+    public void calcular() {
+        calculadora.forEach(calculadoraDeGratificacao -> calculadoraDeGratificacao.calcularGratificacao());
+    }
+
 }

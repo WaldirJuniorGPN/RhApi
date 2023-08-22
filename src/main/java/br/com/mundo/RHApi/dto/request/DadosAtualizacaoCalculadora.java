@@ -1,5 +1,6 @@
 package br.com.mundo.RHApi.dto.request;
 
+import br.com.mundo.RHApi.model.Loja;
 import jakarta.validation.constraints.NotNull;
 
 public record DadosAtualizacaoCalculadora(
@@ -8,6 +9,7 @@ public record DadosAtualizacaoCalculadora(
         Double percentualPrimeiroColocado,
         Double percentualSegundoColocado,
         Double percentualTerceiroColocado,
-        Double percentualDemaisColocados
+        Double percentualDemaisColocados,
+        Loja loja
 ) {
 }

@@ -24,6 +24,10 @@ public class Calculadora {
     private Double percentualTerceiroColocado;
     private Double percentualDemaisColocados;
 
+    @OneToOne(mappedBy = "calculadora",fetch = FetchType.LAZY)
+    @JoinColumn(name = "loja_id")
+    private Loja loja;
+
     public Calculadora(DadosCadastroCalculadora dados) {
         this.percentualPrimeiroColocado = dados.percentualPrimeiroColocado();
         this.percentualSegundoColocado = dados.percentualSegundoColocado();
@@ -43,6 +47,9 @@ public class Calculadora {
         }
         if (dados.percentualDemaisColocados() != null) {
             this.percentualDemaisColocados = dados.percentualDemaisColocados();
+        }
+        if (dados.loja() != null) {
+            this.loja = dados.loja();
         }
     }
 }

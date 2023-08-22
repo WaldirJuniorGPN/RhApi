@@ -3,7 +3,6 @@ package br.com.mundo.RHApi.controller;
 import br.com.mundo.RHApi.dto.request.DadosAtualizacaoLoja;
 import br.com.mundo.RHApi.dto.request.DadosCadastroLoja;
 import br.com.mundo.RHApi.dto.response.DadosDetalhamentoLoja;
-import br.com.mundo.RHApi.dto.response.DadosListagemAtendente;
 import br.com.mundo.RHApi.dto.response.DadosListagemLoja;
 import br.com.mundo.RHApi.model.Loja;
 import br.com.mundo.RHApi.repository.LojaRepository;

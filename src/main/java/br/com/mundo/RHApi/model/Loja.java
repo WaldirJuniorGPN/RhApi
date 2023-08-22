@@ -27,11 +27,21 @@ public class Loja {
     @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
     private List<Atendente> atendentes = new ArrayList<>();
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "calculadora_id")
+    private Calculadora calculadora;
+
     public Loja(DadosCadastroLoja dados) {
         this.nome = dados.nome();
+        this.calculadora = dados.calculadora();
     }
 
     public void atualizarDados(DadosAtualizacaoLoja dados) {
-        this.nome = dados.nome();
+        if (dados.nome() != null) {
+            this.nome = dados.nome();
+        }
+        if (dados.calculadora() != null) {
+            this.calculadora = dados.calculadora();
+        }
     }
 }

@@ -24,7 +24,7 @@ public class AtendenteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroAtedente dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoAtendente> cadastrar(@RequestBody @Valid DadosCadastroAtedente dados, UriComponentsBuilder uriBuilder) {
 
         var atendente = new Atendente(dados);
         this.atendenteRepository.save(atendente);
@@ -41,7 +41,7 @@ public class AtendenteController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoAtendente dados) {
+    public ResponseEntity<DadosDetalhamentoAtendente> atualizar(@RequestBody @Valid DadosAtualizacaoAtendente dados) {
 
         var atendente = atendenteRepository.getReferenceById(dados.id());
         atendente.atualizarAtendente(dados);
@@ -49,7 +49,7 @@ public class AtendenteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity excluir(@PathVariable Long id) {
+    public ResponseEntity<Void> excluir(@PathVariable Long id) {
         atendenteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

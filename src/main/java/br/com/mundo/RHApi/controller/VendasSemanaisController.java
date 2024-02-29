@@ -24,7 +24,7 @@ public class VendasSemanaisController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroVendasSemanais dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoVendasSemanais> cadastrar(@RequestBody @Valid DadosCadastroVendasSemanais dados, UriComponentsBuilder uriBuilder) {
         var vendasSemanais = new VendasSemanais(dados);
         repository.save(vendasSemanais);
         var uri = uriBuilder.path("/vendas/{id}").buildAndExpand(vendasSemanais.getId()).toUri();
@@ -39,14 +39,14 @@ public class VendasSemanaisController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoVendasSemanais dados) {
+    public ResponseEntity<DadosDetalhamentoVendasSemanais> atualizar(@RequestBody @Valid DadosAtualizacaoVendasSemanais dados) {
         var vendasSemanais = repository.getReferenceById(dados.id());
         vendasSemanais.atualizacaoVendas(dados);
         return ResponseEntity.ok(new DadosDetalhamentoVendasSemanais(vendasSemanais));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

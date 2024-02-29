@@ -24,7 +24,7 @@ public class CalculadoraController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCalculadora dados, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<DadosDetalhamentoCalculadora> cadastrar(@RequestBody @Valid DadosCadastroCalculadora dados, UriComponentsBuilder uriBuilder) {
         var calculadora = new Calculadora(dados);
         repository.save(calculadora);
         var uri = uriBuilder.path("/calculadora/{id}").buildAndExpand(calculadora.getId()).toUri();
@@ -39,14 +39,14 @@ public class CalculadoraController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoCalculadora dados) {
+    public ResponseEntity<DadosDetalhamentoCalculadora> atualizar(@RequestBody @Valid DadosAtualizacaoCalculadora dados) {
         var atendente = repository.getReferenceById(dados.id());
         atendente.atualizarPercentual(dados);
         return ResponseEntity.ok(new DadosDetalhamentoCalculadora(atendente));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         repository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

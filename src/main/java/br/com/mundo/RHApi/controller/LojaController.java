@@ -24,7 +24,7 @@ public class LojaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroLoja dados, UriComponentsBuilder uriComponentsBuilder) {
+    public ResponseEntity<DadosDetalhamentoLoja> cadastrar(@RequestBody @Valid DadosCadastroLoja dados, UriComponentsBuilder uriComponentsBuilder) {
 
         var loja = new Loja(dados);
         this.lojaRepository.save(loja);
@@ -41,14 +41,14 @@ public class LojaController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoLoja dados) {
+    public ResponseEntity<DadosDetalhamentoLoja> atualizar(@RequestBody @Valid DadosAtualizacaoLoja dados) {
         var loja = lojaRepository.getReferenceById(dados.id());
         loja.atualizarDados(dados);
         return ResponseEntity.ok(new DadosDetalhamentoLoja(loja));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable Long id) {
         lojaRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }

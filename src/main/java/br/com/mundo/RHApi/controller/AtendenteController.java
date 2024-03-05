@@ -1,7 +1,7 @@
 package br.com.mundo.RHApi.controller;
 
 import br.com.mundo.RHApi.dto.request.DadosAtualizacaoAtendente;
-import br.com.mundo.RHApi.dto.request.DadosCadastroAtedente;
+import br.com.mundo.RHApi.dto.request.DadosCadastroAtendente;
 import br.com.mundo.RHApi.dto.response.DadosDetalhamentoAtendente;
 import br.com.mundo.RHApi.dto.response.DadosListagemAtendente;
 import br.com.mundo.RHApi.model.Atendente;
@@ -24,33 +24,36 @@ public class AtendenteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoAtendente> cadastrar(@RequestBody @Valid DadosCadastroAtedente dados, UriComponentsBuilder uriBuilder) {
-
+    public ResponseEntity<DadosDetalhamentoAtendente> cadastrar(@Valid @RequestBody DadosCadastroAtendente dados, UriComponentsBuilder uriComponentsBuilder) {
         var atendente = new Atendente(dados);
+        var uri = uriComponentsBuilder.path("atendentes/{id}").buildAndExpand(atendente.getId()).toUri();
         this.atendenteRepository.save(atendente);
-        var uri = uriBuilder.path("/atendentes/{id}").buildAndExpand(atendente.getId()).toUri();
-
         return ResponseEntity.created(uri).body(new DadosDetalhamentoAtendente(atendente));
     }
 
     @GetMapping
     public ResponseEntity<Page<DadosListagemAtendente>> listar(Pageable paginacao) {
-        var page = atendenteRepository.findAll(paginacao).map(DadosListagemAtendente::new);
+        var page = this.atendenteRepository.findAll(paginacao).map(DadosListagemAtendente::new);
         return ResponseEntity.ok(page);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<DadosDetalhamentoAtendente> buscarPorId(@PathVariable Long id) {
+        var atendente = this.atendenteRepository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoAtendente(atendente));
     }
 
     @PutMapping
     @Transactional
-    public ResponseEntity<DadosDetalhamentoAtendente> atualizar(@RequestBody @Valid DadosAtualizacaoAtendente dados) {
-
-        var atendente = atendenteRepository.getReferenceById(dados.id());
-        atendente.atualizarAtendente(dados);
+    public ResponseEntity<DadosDetalhamentoAtendente> atualizar(@Valid @RequestBody DadosAtualizacaoAtendente dados) {
+        var atendente = this.atendenteRepository.getReferenceById(dados.id());
+        atendente.atualizar(dados);
         return ResponseEntity.ok(new DadosDetalhamentoAtendente(atendente));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable Long id) {
-        atendenteRepository.deleteById(id);
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        this.atendenteRepository.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 }

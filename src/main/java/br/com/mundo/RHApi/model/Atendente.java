@@ -1,49 +1,39 @@
 package br.com.mundo.RHApi.model;
 
-
 import br.com.mundo.RHApi.dto.request.DadosAtualizacaoAtendente;
-import br.com.mundo.RHApi.dto.request.DadosCadastroAtedente;
+import br.com.mundo.RHApi.dto.request.DadosCadastroAtendente;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Atendente")
-@DiscriminatorValue("atendente")
-@NoArgsConstructor
-@AllArgsConstructor
+@Table(name = "atendentes")
 @Getter
-public class Atendente extends Funcionario {
+@EqualsAndHashCode(of = "id")
+public class Atendente {
 
-    private BigDecimal gratificacao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String loja;
+    private final List<BigDecimal> vendas = new ArrayList<BigDecimal>(6);
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Loja loja;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    private VendasSemanais vendasSemanais;
-
-    public Atendente(DadosCadastroAtedente dados) {
-        super.setNome(dados.nome());
-        super.setSalario(dados.salario());
+    public Atendente(DadosCadastroAtendente dados) {
+        this.nome = dados.nome();
         this.loja = dados.loja();
     }
 
-    public void atualizarAtendente(DadosAtualizacaoAtendente dados) {
+    public void atualizar(DadosAtualizacaoAtendente dados) {
         if (dados.nome() != null) {
-            super.setNome(dados.nome());
-        }
-        if (dados.salario() != null) {
-            super.setSalario(dados.salario());
+            this.nome = dados.nome();
         }
         if (dados.loja() != null) {
             this.loja = dados.loja();
         }
-    }
-
-    public void setGratificacao(BigDecimal gratificacao) {
-        this.gratificacao = gratificacao;
     }
 }
